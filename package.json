@@ -8,7 +8,11 @@
     "website development"
   ],
   "author": "Jan Mencl (mencl.jan97@gmail.com)",
-  "license": "GNU General Public License v3.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JanMencl/Static-boilerplate.git"
+  },
   "dependencies": {
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.4",
@@ -20,6 +24,7 @@
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-mkdir": "^1.0.0",
-    "grunt-postcss": "^0.8.0"
+    "grunt-postcss": "^0.8.0",
+    "grunt-template": "^1.0.0"
   }
 }
