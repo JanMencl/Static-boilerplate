@@ -59,7 +59,7 @@ module.exports = function(grunt) {
             },
             main: {
                 files: {
-                    'style.min.css': 'assets/css/style.css'
+                    'assets/css/style.min.css': 'assets/css/style.css'
                 }
             }
         },
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            main_css: ['style.css', 'assets/css/raw-style.css', 'assets/css/style.css', 'style.min.css'],
+            main_css: ['assets/css/style.css', 'assets/css/style.min.css'],
             main_all_js: ['assets/js/main.js', 'assets/js/main.min.js']
         },
         watch: {
@@ -138,13 +138,19 @@ module.exports = function(grunt) {
         },
         copy: {
             animate: {
-                options: {},
+                options: {
+                    separator: '',
+                    punctuation: '',
+                },
                 files: {
                     'assets/css/vendor/animate.min.css': ['bower_components/animate.css/animate.min.css'],
                 }
             },
             fontawesome: {
-                options: {},
+                options: {
+                    separator: '',
+                    punctuation: '',
+                },
                 files: {
                     'assets/css/vendor/font-awesome.min.css': ['bower_components/fontawesome/css/font-awesome.min.css'],
                     'assets/fonts/FontAwesome.otf': ['bower_components/fontawesome/fonts/FontAwesome.otf'],
@@ -156,16 +162,22 @@ module.exports = function(grunt) {
                 }
             },
             jquery: {
-                options: {},
+                options: {
+                    separator: '',
+                    punctuation: '',
+                },
                 files: {
                     'assets/js/vendor/jquery.min.js': ['bower_components/jquery/dist/jquery.min.js'],
                 }
             },
             bootstrap: {
-                options: {},
+                options: {
+                    separator: '',
+                    punctuation: '',
+                },
                 files: {
                     'assets/css/vendor/bootstrap.min.css': ['node_modules/bootstrap/dist/css/bootstrap.min.css'],
-                    'assets/js/vendor/bootstrap.min.js': ['node_modules/bootstrap/dist/css/bootstrap.min.js'],
+                    'assets/js/vendor/bootstrap.min.js': ['node_modules/bootstrap/dist/js/bootstrap.min.js'],
                 }
             }
         }
@@ -188,16 +200,14 @@ module.exports = function(grunt) {
 
     //registering main Task
     grunt.registerTask('main_default', [
-        'clean:main_all_js',
-        'clean:main_css',
-        'concat:main_js',
-        'sass:main',
-        'concat:raw_css',
-        'concat:extra_css',
-        'autoprefixer',
-        'cssmin:main',
-        'uglify:main',
-        'uglify:vendor'
+        'clean:main_all_js',//clean old js files
+        'clean:main_css',//clean old css files
+        'concat:main_js',//create main.js file
+        'sass:main',//translate sass files into one style.css
+        'concat:main_css',//concat style.css with vendor css files
+        'autoprefixer',//prefix style.css file
+        'cssmin:main',//minify css file
+        'uglify:main',//minify js file
     ]);
 
     //registering watch Task
