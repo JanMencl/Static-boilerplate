@@ -17,7 +17,6 @@ module.exports = function(grunt) {
                         'assets/fonts',
                         'assets/img',
                         'assets/scss',
-                        'assets/templates',
                         'assets/css/vendor',
                         'assets/js/includes',
                         'assets/js/modules',
@@ -110,7 +109,7 @@ module.exports = function(grunt) {
 
     });
 
-    // Load the plugin that provides the "uglify" task.
+    // Loading all grunt helpers
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -120,7 +119,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-template');
+    grunt.loadNpmTasks('grunt-move');
 
+
+    //registering main Task
     grunt.registerTask('main_default', [
         'clean:main_all_js',
         'clean:main_css',
@@ -134,45 +136,43 @@ module.exports = function(grunt) {
         'uglify:vendor'
     ]);
 
+    //registering watch Task
+    grunt.registerTask('watch_main', 'watch:main');
+
+
+    //registering project Init
+    //1) Create tree filesystem
+    //2) Move Template files to Assets
+    //3) Create all template files
     grunt.registerTask('project_init', [
-        'clean:main_all_js',
-        'clean:main_css',
-        'concat:main_js',
-        'sass:main',
-        'concat:raw_css',
-        'concat:extra_css',
-        'autoprefixer',
-        'cssmin:main',
-        'uglify:main',
-        'uglify:vendor'
+
+        console.log("Starting Project init "),
+        console.log("------"),
+        'mkdir:assets',
+        console.log("Moving templates to assets"),
+        console.log("------"),
+        /* Move Templates to Assets */
+        console.log("Generating all template files"),
+        console.log("------"),
+        'generate_template_files',
+        console.log("Generating finished successfully")
+
     ]);
 
+    //Creating template files
     grunt.registerTask('generate_template_files', [
-        'clean:main_all_js',
-        'clean:main_css',
-        'concat:main_js',
-        'sass:main',
-        'concat:raw_css',
-        'concat:extra_css',
-        'autoprefixer',
-        'cssmin:main',
-        'uglify:main',
-        'uglify:vendor'
+        console.log("Generating CSS files"),
+        'template:css',
+        console.log("Generating JS files"),
+        'template:js',
+        console.log("Generating SCSS files"),
+        'template:scss',
+        console.log("Generating HTML files"),
+        'template:html'
     ]);
 
     grunt.registerTask('migrate_to_wp', [
-        'clean:main_all_js',
-        'clean:main_css',
-        'concat:main_js',
-        'sass:main',
-        'concat:raw_css',
-        'concat:extra_css',
-        'autoprefixer',
-        'cssmin:main',
-        'uglify:main',
-        'uglify:vendor'
+        /*TODO dodělat migrate to WP Task*/
     ]);
-
-    grunt.registerTask('watch_main', 'watch:main');
 
 };
