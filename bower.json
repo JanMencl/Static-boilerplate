@@ -1,18 +1,15 @@
 {
-  "name": "inspishop-starterkit",
+  "name": "bower-boilerplate-static",
   "version": "1.0.0",
   "authors": [
-    "Tomas Novotny (tomas.novotny@inspirum.cz)"
+    "Jan Mencl (mencl.jan97@gmail.com)"
   ],
-  "description": "bower for inspishop starterkit",
-  "license": "MIT",
-  "private": true,
+  "description": "bower for boilerplate-static",
+  "license": "GNU General Public License v3.0",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "dependencies": {
     "fontawesome": "~4.7.0",

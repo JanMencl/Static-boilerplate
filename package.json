@@ -1,24 +1,25 @@
 {
-  "name": "static_boilerpalte",
+  "name": "boilerplate-static",
   "version": "1.0.0",
-  "description": "Web-dev boostrap boilerplate",
+  "description": "Web-dev static boostrap boilerplate",
   "main": "",
   "keywords": [
     "boilerplate",
     "website development"
   ],
-  "author": "Jan Mencl",
+  "author": "Jan Mencl (mencl.jan97@gmail.com)",
   "license": "GNU General Public License v3.0",
   "dependencies": {
-    "grunt-autoprefixer": "^3.0.4",
-    "grunt-contrib-concat": "^1.0.1",
     "grunt": "^1.0.1",
+    "grunt-autoprefixer": "^3.0.4",
     "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-mkdir": "^1.0.0",
     "grunt-postcss": "^0.8.0"
   }
 }
