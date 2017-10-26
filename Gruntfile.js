@@ -18,19 +18,12 @@ module.exports = function(grunt) {
                         'assets/img',
                         'assets/img/icons',
                         'assets/scss',
-                        'assets/templates',
                         'assets/css/vendor',
                         'assets/js/includes',
                         'assets/js/modules',
                         'assets/js/vendor'
                     ]
                 }
-            }
-        },
-        move: {
-            templates: {
-                src: ['Templates/*'],
-                dest: 'assets/templates'
             }
         },
         concat: {
@@ -89,8 +82,7 @@ module.exports = function(grunt) {
         },
         clean: {
             main_css: ['style.css', 'assets/css/raw-style.css', 'assets/css/style.css', 'style.min.css'],
-            main_all_js: ['assets/js/main.js', 'assets/js/main.min.js'],
-            templates: ['assets/js/main.js', 'assets/js/main.min.js']
+            main_all_js: ['assets/js/main.js', 'assets/js/main.min.js']
         },
         watch: {
             main: {
@@ -109,7 +101,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'assets/scss/style.scss': ['assets/templates/assets/style.scss.tpl']
+                    'assets/scss/style.scss': ['Templates/assets/style.scss.tpl']
                 }
             },
             css: {
@@ -119,7 +111,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'assets/css/style.css': ['assets/templates/assets/style.css.tpl']
+                    'assets/css/style.css': ['Templates/assets/style.css.tpl']
                 }
             },
             js: {
@@ -129,7 +121,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'assets/js/main.js': ['assets/templates/assets/main.js.tpl']
+                    'assets/js/main.js': ['Templates/assets/main.js.tpl']
                 }
             },
             html: {
@@ -139,7 +131,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '*': ['assets/templates/html/*']
+                    '*': ['Templates/html/*']
                 }
             }
         }
@@ -179,41 +171,18 @@ module.exports = function(grunt) {
 
     //registering project Init
     //1) Create tree filesystem
-    //2) Move Template files to Assets
-    //3) Clean Templates folder
-    //3) Create all template files
-    //4) Pulling all vendor files
+    //2) Create all template files
+    //3) Pulling all vendor files
     grunt.registerTask('project_init', [
-
-        console.log("Starting Project init "),
-        console.log("------"),
         'mkdir:assets',
-        console.log("Moving templates to assets"),
-        console.log("------"),
-        'move:templates',
-        console.log("Removing old templates folder"),
-        console.log("------"),
-        'clean:templates',
-        console.log("Generating all template files"),
-        console.log("------"),
-        'generate_template_files',
-        /*console.log("Pulling all vendor files"),
-        console.log("------"),*/
-        /*'generate_template_files',*/
-        console.log("Process finished successfully")
-
-
+        'generate_template_files'
     ]);
 
     //Creating template files
     grunt.registerTask('generate_template_files', [
-        console.log("Generating CSS files"),
         'template:css',
-        console.log("Generating JS files"),
         'template:js',
-        console.log("Generating SCSS files"),
         'template:scss',
-        console.log("Generating HTML files"),
         'template:html'
     ]);
 
