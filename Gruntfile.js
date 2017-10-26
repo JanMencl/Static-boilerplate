@@ -131,7 +131,41 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '*': ['Templates/html/*']
+                    'index.html': ['Templates/html/index.html.tpl'],
+                    '404.html': ['Templates/html/404.html.tpl']
+                }
+            }
+        },
+        copy: {
+            animate: {
+                options: {},
+                files: {
+                    'assets/css/vendor/animate.min.css': ['bower_components/animate.css/animate.min.css'],
+                }
+            },
+            fontawesome: {
+                options: {},
+                files: {
+                    'assets/css/vendor/font-awesome.min.css': ['bower_components/fontawesome/css/font-awesome.min.css'],
+                    'assets/fonts/FontAwesome.otf': ['bower_components/fontawesome/fonts/FontAwesome.otf'],
+                    'assets/fonts/fontawesome-webfont.eot': ['bower_components/fontawesome/fonts/fontawesome-webfont.eot'],
+                    'assets/fonts/fontawesome-webfont.svg': ['bower_components/fontawesome/fonts/fontawesome-webfont.svg'],
+                    'assets/fonts/fontawesome-webfont.ttf': ['bower_components/fontawesome/fonts/fontawesome-webfont.ttf'],
+                    'assets/fonts/fontawesome-webfont.woff': ['bower_components/fontawesome/fonts/fontawesome-webfont.woff'],
+                    'assets/fonts/fontawesome-webfont.woff2': ['bower_components/fontawesome/fonts/fontawesome-webfont.woff2'],
+                }
+            },
+            jquery: {
+                options: {},
+                files: {
+                    'assets/js/vendor/jquery.min.js': ['bower_components/jquery/dist/jquery.min.js'],
+                }
+            },
+            bootstrap: {
+                options: {},
+                files: {
+                    'assets/css/vendor/bootstrap.min.css': ['node_modules/bootstrap/dist/css/bootstrap.min.css'],
+                    'assets/js/vendor/bootstrap.min.js': ['node_modules/bootstrap/dist/css/bootstrap.min.js'],
                 }
             }
         }
@@ -148,7 +182,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-template');
-    grunt.loadNpmTasks('grunt-move');
+    grunt.loadNpmTasks('grunt-copy');
+
 
 
     //registering main Task
@@ -175,7 +210,8 @@ module.exports = function(grunt) {
     //3) Pulling all vendor files
     grunt.registerTask('project_init', [
         'mkdir:assets',
-        'generate_template_files'
+        'generate_template_files',
+        'pull_vendor_files'
     ]);
 
     //Creating template files
@@ -184,6 +220,14 @@ module.exports = function(grunt) {
         'template:js',
         'template:scss',
         'template:html'
+    ]);
+
+    //Pulling vendor files
+    grunt.registerTask('pull_vendor_files', [
+        'copy:animate',
+        'copy:fontawesome',
+        'copy:jquery',
+        'copy:bootstrap'
     ]);
 
     grunt.registerTask('migrate_to_wp', [

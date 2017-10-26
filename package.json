@@ -24,9 +24,12 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-copy": "^0.1.0",
     "grunt-mkdir": "^1.0.0",
     "grunt-move": "^0.1.2",
     "grunt-postcss": "^0.8.0",
-    "grunt-template": "^1.0.0"
+    "grunt-template": "^1.0.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.6"
   }
 }
