@@ -109,7 +109,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'assets/scss/style.scss': ['assets/templates/style.scss.tpl']
+                    'assets/scss/style.scss': ['assets/templates/assets/style.scss.tpl']
                 }
             },
             css: {
@@ -119,7 +119,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'assets/css/style.css': ['assets/templates/style.css.tpl']
+                    'assets/css/style.css': ['assets/templates/assets/style.css.tpl']
                 }
             },
             js: {
@@ -129,7 +129,17 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'assets/js/main.js': ['assets/templates/main.js.tpl']
+                    'assets/js/main.js': ['assets/templates/assets/main.js.tpl']
+                }
+            },
+            html: {
+                options: {
+                    data: {
+                        intro: 'Comming soon'
+                    }
+                },
+                files: {
+                    '*': ['assets/templates/html/*']
                 }
             }
         }
@@ -187,8 +197,8 @@ module.exports = function(grunt) {
         console.log("Generating all template files"),
         console.log("------"),
         'generate_template_files',
-        console.log("Pulling all vendor files"),
-        console.log("------"),
+        /*console.log("Pulling all vendor files"),
+        console.log("------"),*/
         /*'generate_template_files',*/
         console.log("Process finished successfully")
 
@@ -202,7 +212,9 @@ module.exports = function(grunt) {
         console.log("Generating JS files"),
         'template:js',
         console.log("Generating SCSS files"),
-        'template:scss'
+        'template:scss',
+        console.log("Generating HTML files"),
+        'template:html'
     ]);
 
     grunt.registerTask('migrate_to_wp', [
